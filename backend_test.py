@@ -477,9 +477,8 @@ class ECommerceAPITester:
             self.run_test(
                 "Update Order to Delivered",
                 "PUT",
-                f"admin/orders/{self.created_order_id}/status",
+                f"admin/orders/{self.created_order_id}/status?status=delivered",
                 200,
-                headers={'Authorization': f'Bearer {self.admin_token}'},
                 use_admin=True
             )
         
