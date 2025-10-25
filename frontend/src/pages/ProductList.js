@@ -97,12 +97,12 @@ const ProductList = () => {
               <div className="space-y-4">
                 <div>
                   <Label>Category</Label>
-                  <Select value={filters.category} onValueChange={(value) => updateFilter('category', value)}>
+                  <Select value={filters.category || "all"} onValueChange={(value) => updateFilter('category', value === "all" ? '' : value)}>
                     <SelectTrigger data-testid="category-filter">
                       <SelectValue placeholder="All Categories" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="">All Categories</SelectItem>
+                      <SelectItem value="all">All Categories</SelectItem>
                       {categories.map((cat) => (
                         <SelectItem key={cat.id} value={cat.name}>
                           {cat.name}
@@ -114,12 +114,12 @@ const ProductList = () => {
 
                 <div>
                   <Label>Sort By</Label>
-                  <Select value={filters.sort} onValueChange={(value) => updateFilter('sort', value)}>
+                  <Select value={filters.sort || "default"} onValueChange={(value) => updateFilter('sort', value === "default" ? '' : value)}>
                     <SelectTrigger data-testid="sort-filter">
                       <SelectValue placeholder="Default" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="">Default</SelectItem>
+                      <SelectItem value="default">Default</SelectItem>
                       <SelectItem value="price_low">Price: Low to High</SelectItem>
                       <SelectItem value="price_high">Price: High to Low</SelectItem>
                       <SelectItem value="rating">Highest Rated</SelectItem>
